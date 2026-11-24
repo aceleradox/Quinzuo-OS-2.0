@@ -56,15 +56,15 @@ Certifique-se de ter o [Node.js](https://nodejs.org) instalado em sua máquina.
 4. **Acesse no navegador:**
    Abra `http://localhost:3000` *(ajuste a porta conforme configurado no seu `server.js`)*.
    
-   ````redes
+   redes
    ## 🌐 Autor & Redes Sociais / Author & Socials
-````
+
 Desenvolvido por **Acelerado DEV (Vulgo Acelerado)** — conheça outros projetos da família **Quinzuo** e acompanhe as atualizações:
 
 [![itch.io](https://shields.io)](https://aceleradox.itch.io/)
 [![Instagram](https://shields.io)](https://www.instagram.com/vulgo_acelerado/)
 [![Threads](https://shields.io)](https://www.threads.com/@vulgo_acelerado)
-````
+
 
 
 ## 🤝 Contribuição
