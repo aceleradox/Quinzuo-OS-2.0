@@ -1,0 +1,18 @@
+{
+  "id": "quiznuo-net-tools",
+  "name": "Quiznuo Net Tools",
+  "description": "Consultas CURL e WHOIS via ponte com o pai, com headers, corpo, copiar e baixar.",
+  "icon": "🌐",
+  "version": "1.0.0",
+  "author": "Quinzuo Labs",
+  "files": [
+    {
+      "path": "quiznuo-whois-curl.qnz",
+      "name": "quiznuo-whois-curl.qnz",
+      "type": "application/x-qnz",
+      "dock": true,
+      "icon": "🌐",
+      "label": "Rede CURL/WHOIS"
+    }
+  ]
+}

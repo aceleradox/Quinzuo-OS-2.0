@@ -1,0 +1,41 @@
+{
+  "packages": [
+    {
+      "id": "cortsam-audio-editor",
+      "dir": "cortsam-audio-editor",
+      "name": "Cortsam Audio Editor"
+    },
+    {
+      "id": "quiznuo-net-tools",
+      "dir": "quiznuo-net-tools",
+      "name": "Quiznuo Rede (CURL/WHOIS)"
+    },
+    {
+      "id": "quinzuo-arcade-pack",
+      "dir": "quinzuo-arcade-pack",
+      "name": "Quinzuo Arcade Pack"
+    },
+    {
+      "id": "quinzuo-produtividade",
+      "dir": "quinzuo-produtividade",
+      "name": "Quinzuo Produtividade"
+    },
+    {
+      "id": "quinzuo-cortex-lab",
+      "dir": "quinzuo-cortex-lab",
+      "name": "Quinzuo Cortex Lab"
+    },
+    {
+      "id": "quinzuo-excel-qnz",
+      "dir": "quinzuo-excel-qnz",
+      "name": "Quinzuo Excel",
+      "icon": "📊"
+    },
+    {
+      "id": "quinzeta-db-qnz",
+      "dir": "quinzeta-db-qnz",
+      "name": "Quinzeta DB",
+      "icon": "🗄️"
+    }
+  ]
+}

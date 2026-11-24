@@ -1,0 +1,34 @@
+{
+  "id": "quinzuo-arcade-pack",
+  "name": "Quinzuo Arcade Pack",
+  "description": "Três jogos prontos para jogar: Snake Game, Memory Game e Dice Game.",
+  "icon": "🎮",
+  "version": "1.0.0",
+  "author": "Quinzuo Labs",
+  "files": [
+    {
+      "path": "snake.qnz",
+      "name": "snake.qnz",
+      "type": "application/x-qnz",
+      "dock": true,
+      "icon": "🐍",
+      "label": "Snake Game"
+    },
+    {
+      "path": "memory.qnz",
+      "name": "memory.qnz",
+      "type": "application/x-qnz",
+      "dock": true,
+      "icon": "🧠",
+      "label": "Memory Game"
+    },
+    {
+      "path": "dice.qnz",
+      "name": "dice.qnz",
+      "type": "application/x-qnz",
+      "dock": true,
+      "icon": "🎲",
+      "label": "Dice Game"
+    }
+  ]
+}

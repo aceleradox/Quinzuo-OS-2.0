@@ -1,0 +1,160 @@
+:root {
+    --quinzuo-primary: #8b5cf6;
+    --quinzuo-cyan: #06b6d4;
+    --desktop-bg: radial-gradient(circle at 20% 20%, #1e1b4b 0%, #0f172a 45%, #020617 90%);
+    --dock-height: 78px;
+    --qz-panel: rgba(15, 23, 42, 0.96);
+    --qz-border: rgba(148, 163, 184, 0.22);
+}
+
+body.theme-funk {
+    --quinzuo-primary: #ff007f;
+    --quinzuo-cyan: #00ff00;
+    --desktop-bg: radial-gradient(circle at 50% 50%, #2a0033 0%, #000000 70%);
+}
+
+* { box-sizing: border-box; }
+html, body { width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden; }
+body {
+    font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #070913;
+    color: #f8fafc;
+    user-select: none;
+}
+button, input, textarea, select { font-family: inherit; }
+
+::-webkit-scrollbar { width: 7px; height: 7px; }
+::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.6); }
+::-webkit-scrollbar-thumb { background: rgba(139, 92, 246, 0.55); border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: var(--quinzuo-cyan); }
+
+.qz-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #030712;
+    padding: 16px;
+}
+.qz-overlay.hidden { display: none !important; }
+
+.qz-panel {
+    background: var(--qz-panel);
+    border: 1px solid var(--qz-border);
+    border-radius: 16px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.75);
+    padding: 24px;
+    backdrop-filter: blur(20px);
+}
+
+.qz-field { display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: #cbd5e1; }
+.qz-field > span { font-weight: 700; color: #a78bfa; }
+.qz-field input, .qz-field select, .qz-input {
+    background: #020617;
+    border: 1px solid #475569;
+    border-radius: 8px;
+    padding: 7px 10px;
+    color: #e2e8f0;
+    font-size: 12px;
+    outline: none;
+}
+.qz-field input:focus, .qz-field select:focus, .qz-input:focus { border-color: var(--quinzuo-cyan); box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.18); }
+
+.qz-check { display: flex; align-items: center; gap: 9px; cursor: pointer; font-size: 12px; color: #cbd5e1; }
+.qz-check input { width: 15px; height: 15px; accent-color: var(--quinzuo-primary); }
+
+.qz-btn {
+    border: 1px solid transparent;
+    border-radius: 9px;
+    padding: 9px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.16s ease;
+    color: #f8fafc;
+}
+.qz-btn:hover { transform: translateY(-1px); filter: brightness(1.12); }
+.qz-btn-primary { background: linear-gradient(90deg, var(--quinzuo-primary), var(--quinzuo-cyan)); }
+.qz-btn-ghost { background: rgba(148, 163, 184, 0.12); border-color: var(--qz-border); }
+.qz-btn-danger { background: #b91c1c; }
+.qz-btn-success { background: #059669; }
+.qz-btn-sm { padding: 5px 9px; font-size: 10px; border-radius: 6px; }
+
+.qz-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 2px 7px; border-radius: 999px; font-size: 9px; font-weight: 800;
+    background: rgba(139, 92, 246, 0.22); color: #ddd6fe; border: 1px solid rgba(139, 92, 246, 0.35);
+}
+
+.qz-card {
+    background: rgba(15, 23, 42, 0.75);
+    border: 1px solid var(--qz-border);
+    border-radius: 12px;
+    padding: 12px;
+}
+.qz-card-title { font-size: 11px; font-weight: 800; color: var(--quinzuo-cyan); margin-bottom: 7px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+.qz-mono { font-family: 'Cascadia Code', 'Consolas', 'Courier New', monospace; }
+
+/* Boot — frases em destaque e log de carregamento realista */
+#bootPhraseBox {
+    width: min(760px, 92vw);
+    min-height: 96px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 18px 22px;
+    border-radius: 16px;
+    border: 1px solid rgba(34, 211, 238, 0.35);
+    background: linear-gradient(180deg, rgba(30, 41, 59, 0.88), rgba(2, 6, 23, 0.92));
+    box-shadow: 0 0 45px rgba(6, 182, 212, 0.18), inset 0 0 24px rgba(139, 92, 246, 0.12);
+    animation: qzBootGlow 2.4s ease-in-out infinite alternate;
+}
+#bootLog {
+    color: #a5f3fc;
+    font-family: 'Cascadia Code', Consolas, monospace;
+    font-size: clamp(17px, 2.5vw, 30px);
+    font-weight: 800;
+    line-height: 1.25;
+    text-align: center;
+    letter-spacing: 0.01em;
+    text-shadow: 0 0 10px rgba(34, 211, 238, 0.85), 0 0 28px rgba(34, 211, 238, 0.35);
+}
+#bootPhraseCount {
+    color: #818cf8;
+    font-family: 'Cascadia Code', Consolas, monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+#bootSubLog {
+    width: min(760px, 92vw);
+    min-height: 76px;
+    margin-top: 14px;
+    color: #94a3b8;
+    font-size: 10px;
+    line-height: 1.55;
+    white-space: pre-line;
+    text-align: left;
+}
+@keyframes qzBootGlow {
+    from { box-shadow: 0 0 28px rgba(6, 182, 212, 0.12), inset 0 0 20px rgba(139, 92, 246, 0.10); }
+    to { box-shadow: 0 0 58px rgba(6, 182, 212, 0.30), inset 0 0 30px rgba(139, 92, 246, 0.20); }
+}
+
+/* Título e subtítulo com o mesmo tamanho, combinando com as frases */
+#bootTitle,
+#bootSubtitle {
+    font-size: clamp(22px, 3.4vw, 40px);
+    line-height: 1.15;
+    text-align: center;
+    text-shadow: 0 0 18px rgba(34, 211, 238, 0.35);
+}
+#bootTitle { font-weight: 900; }
+#bootSubtitle { font-weight: 700; letter-spacing: 0.04em; }

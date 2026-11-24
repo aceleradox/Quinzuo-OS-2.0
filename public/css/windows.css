@@ -1,0 +1,167 @@
+#windowsContainer {
+    position: fixed;
+    inset: 32px 0 0 0;
+    z-index: 500;
+    pointer-events: none;
+}
+
+.window {
+    position: absolute;
+    background: rgba(15, 23, 42, 0.96);
+    backdrop-filter: blur(25px);
+    border-radius: 12px;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-width: 320px;
+    min-height: 200px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.65), 0 0 0 1px rgba(148,163,184,0.2);
+    transition: opacity 0.18s, transform 0.18s;
+    resize: both;
+}
+.window.minimized { display: none; }
+.window.maximized {
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0;
+}
+.window.inactive { box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 0 1px rgba(148,163,184,0.12); opacity: 0.85; }
+.window.closing { opacity: 0; transform: scale(0.96); }
+
+.window-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 12px; height: 30px; flex-shrink: 0;
+    background: rgba(30, 41, 59, 0.9);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    cursor: move;
+}
+.window-title { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; color: #f1f5f9; pointer-events: none; overflow: hidden; white-space: nowrap; }
+.window-title span { font-size: 15px; }
+.window-title small { color: #64748b; font-weight: 500; }
+
+/* Botões antigos do cabeçalho ficam ocultos: o controle agora vive no window-dock */
+.window-header .win-controls { display: none !important; }
+.win-btn { width: 11px; height: 11px; border-radius: 50%; cursor: pointer; border: none; padding: 0; }
+.win-close { background: #ef4444; }
+.win-min { background: #facc15; }
+.win-max { background: #22c55e; }
+
+/* Dock dentro de cada janela */
+.window-dock {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    height: 39px;
+    padding: 0 8px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 6;
+    background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+    border-top: 1px solid rgba(34, 211, 238, 0.28);
+    box-shadow: 0 -8px 22px rgba(0, 0, 0, 0.35);
+}
+.wdock-app {
+    width: 29px; height: 29px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; border-radius: 8px;
+    background: rgba(139, 92, 246, 0.24);
+    border: 1px solid rgba(139, 92, 246, 0.45);
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.25);
+}
+.wdock-menus {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.wdock-menus::-webkit-scrollbar { display: none; }
+.wdock-menu-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    color: #cbd5e1;
+    border-radius: 7px;
+    padding: 5px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+.wdock-menu-btn:hover,
+.wdock-menu-btn.active {
+    background: rgba(139, 92, 246, 0.26);
+    border-color: rgba(34, 211, 238, 0.35);
+    color: #ffffff;
+}
+.wdock-actions { display: flex; align-items: center; gap: 6px; margin-right: 7px; flex-shrink: 0; }
+.wdock-action {
+    width: 25px; height: 25px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 7px;
+    border: 1px solid #475569;
+    color: #020617;
+    font-size: 12px;
+    font-weight: 900;
+    cursor: pointer;
+    padding: 0;
+    transition: filter 0.15s, transform 0.15s;
+}
+.wdock-action:hover { filter: brightness(1.2); transform: translateY(-1px); }
+.wdock-action.min { background: #facc15; border-color: #ca8a04; }
+.wdock-action.max { background: #22c55e; border-color: #16a34a; }
+.wdock-action.close { background: #ef4444; border-color: #dc2626; color: #ffffff; }
+.wdock-alt-hint {
+    margin-left: 6px; flex-shrink: 0; font-size: 8px; font-weight: 900; letter-spacing: 0.08em;
+    color: #67e8f9; border: 1px solid rgba(103,232,249,0.45); border-radius: 5px;
+    padding: 3px 5px; background: rgba(6,182,212,0.12); cursor: help;
+}
+.wdock-alt-hint:hover { background: rgba(6,182,212,0.3); }
+
+/* Modo avançado liberado pela tecla Alt */
+.window.advanced { box-shadow: 0 25px 60px rgba(0,0,0,0.65), 0 0 0 2px #22d3ee, 0 0 28px rgba(34,211,238,0.35); }
+.window.advanced .window-header { background: rgba(8,47,73,0.95); }
+.window-content.qz-dev-mode { outline: 1px dashed rgba(34,211,238,0.65); outline-offset: -4px; }
+.window-content.qz-dev-mode * { cursor: crosshair; }
+
+.window-menu-panel {
+    position: absolute;
+    bottom: 39px;
+    left: 8px;
+    z-index: 60;
+    min-width: 200px;
+    max-width: 280px;
+    max-height: 60vh;
+    overflow: auto;
+    display: none;
+    padding: 5px;
+    background: rgba(2, 6, 23, 0.98);
+    border: 1px solid #334155;
+    border-radius: 10px;
+    box-shadow: 0 18px 45px rgba(0,0,0,0.7), 0 0 20px rgba(6,182,212,0.12);
+}
+.window-menu-panel.open { display: block; }
+.wm-item {
+    display: flex; align-items: center; gap: 8px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #cbd5e1;
+    font-size: 10px;
+    font-weight: 600;
+    text-align: left;
+    padding: 7px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.wm-item:hover { background: rgba(139, 92, 246, 0.26); color: #ffffff; }
+.wm-item small { margin-left: auto; color: #64748b; font-size: 9px; font-weight: 500; }
+.wm-sep { height: 1px; background: #1e293b; margin: 4px 2px; }
+
+.window-content { flex: 1; overflow: auto; display: flex; flex-direction: column; background: #0f172a; color: #f1f5f9; min-height: 0; }
+.window-error { padding: 20px; color: #fca5a5; font-family: monospace; font-size: 12px; white-space: pre-wrap; }

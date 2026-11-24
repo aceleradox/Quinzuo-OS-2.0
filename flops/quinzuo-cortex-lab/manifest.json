@@ -1,0 +1,18 @@
+{
+  "id": "quinzuo-cortex-lab",
+  "name": "Quinzuo Cortex Lab",
+  "description": "Monitor córtex animado com gráfico canvas, sliders e frases do boot.",
+  "icon": "🧬",
+  "version": "1.0.0",
+  "author": "Quinzuo Labs",
+  "files": [
+    {
+      "path": "cortex-monitor.qnz",
+      "name": "cortex-monitor.qnz",
+      "type": "application/x-qnz",
+      "dock": true,
+      "icon": "🧬",
+      "label": "Córtex Lab"
+    }
+  ]
+}

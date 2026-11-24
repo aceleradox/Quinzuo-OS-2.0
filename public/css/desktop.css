@@ -1,0 +1,111 @@
+#desktop {
+    position: fixed;
+    inset: 0;
+    background: var(--desktop-bg);
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    overflow: hidden;
+}
+#desktop.hidden, #topBar.hidden, #windowsContainer.hidden, #dockContainer.hidden { display: none; }
+
+#desktopFilesGrid { position: absolute; top: 32px; bottom: 12px; left: 0; right: 0; }
+.desktop-file { position: absolute; cursor: pointer; transition: background 0.2s, border 0.2s; }
+.desktop-file.dragging { z-index: 5000; opacity: 0.9; cursor: grabbing !important; }
+.desktop-file.selected { background: rgba(139, 92, 246, 0.28); border-color: var(--quinzuo-cyan); }
+
+#topBar {
+    position: fixed; top: 0; left: 0; right: 0; height: 32px;
+    background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 9000; display: flex; align-items: center; padding: 0 12px; font-size: 12px;
+}
+.top-btn { padding: 3px 10px; cursor: pointer; border-radius: 4px; transition: all 0.15s; font-weight: 500; }
+.top-btn:hover { background: rgba(255, 255, 255, 0.1); color: var(--quinzuo-cyan); }
+
+#contextMenu {
+    position: fixed; z-index: 99999; width: 224px;
+    background: rgba(15, 23, 42, 0.97); backdrop-filter: blur(18px);
+    border: 1px solid #475569; border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.7); color: #e2e8f0;
+}
+#contextMenu.hidden { display: none; }
+#contextMenu.flex { display: flex; }
+.ctx-item { padding: 8px 14px; cursor: pointer; transition: background 0.1s; display: flex; align-items: center; gap: 9px; }
+.ctx-item:hover { background: rgba(139, 92, 246, 0.45); }
+.ctx-sep { border-top: 1px solid #334155; margin: 3px 0; }
+
+#bsodScreen {
+    position: fixed; inset: 0; background-color: #0000aa; z-index: 999999;
+    display: none; flex-direction: column; align-items: center; justify-content: center;
+    font-family: 'Courier New', Courier, monospace; color: white; text-align: center; padding: 2rem;
+}
+.bsod-title { font-size: 2.25rem; font-weight: bold; background: white; color: #0000aa; padding: 4px 16px; margin-bottom: 32px; box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
+
+#btnEmancipar { position: fixed; bottom: 0; right: 0; width: 20px; height: 20px; z-index: 100000; cursor: pointer; opacity: 0; }
+
+#bootScreen { transition: opacity 0.8s; }
+#bootScreen.hidden { opacity: 0; pointer-events: none; }
+.cortex-pulse {
+    width: 110px; height: 110px; border-radius: 50%;
+    background: radial-gradient(circle, var(--quinzuo-primary) 0%, transparent 100%);
+    border: 2px solid var(--quinzuo-cyan); box-shadow: 0 0 35px var(--quinzuo-primary);
+    animation: pulseGlow 2s infinite ease-in-out;
+}
+@keyframes pulseGlow { 0%, 100% { transform: scale(0.98); } 50% { transform: scale(1.08); } }
+
+/* Menu iniciar centralizado — Deepin/Linux */
+#startMenu { user-select: none; }
+.start-overlay {
+    position: fixed; inset: 0; z-index: 9500;
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+}
+.start-overlay.hidden { display: none; }
+.start-backdrop { position: absolute; inset: 0; background: rgba(2, 6, 23, 0.58); backdrop-filter: blur(3px); }
+.start-panel {
+    position: relative;
+    width: min(820px, 94vw);
+    max-height: min(78vh, 720px);
+    display: flex; flex-direction: column;
+    background: rgba(15, 23, 42, 0.97);
+    border: 1px solid rgba(148, 163, 184, 0.32);
+    border-radius: 18px;
+    box-shadow: 0 30px 90px rgba(0,0,0,0.75), 0 0 45px rgba(139,92,246,0.22);
+    overflow: hidden;
+    animation: startIn 0.16s ease-out;
+}
+@keyframes startIn { from { opacity: 0; transform: scale(0.96) translateY(8px); } to { opacity: 1; transform: scale(1); } }
+.start-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 15px 18px; border-bottom: 1px solid #334155;
+    background: linear-gradient(90deg, rgba(139,92,246,0.22), rgba(6,182,212,0.10));
+}
+.start-brand { font-size: 15px; font-weight: 900; letter-spacing: 0.08em; color: #f8fafc; display: flex; align-items: center; gap: 9px; }
+.start-brand > span { font-size: 22px; }
+.start-brand small { display: block; font-size: 9px; font-weight: 600; letter-spacing: 0.04em; color: #94a3b8; }
+.start-close {
+    width: 30px; height: 30px; border-radius: 50%; border: 1px solid #ef4444;
+    background: rgba(239,68,68,0.16); color: #fecaca; font-size: 14px; font-weight: 900; cursor: pointer;
+}
+.start-close:hover { background: #ef4444; color: white; }
+.start-search { display: flex; align-items: center; gap: 8px; margin: 12px 18px 4px; padding: 7px 10px; border-radius: 9px; background: #020617; border: 1px solid #334155; }
+.start-search input { flex: 1; background: transparent; border: none; outline: none; color: #e2e8f0; font-size: 11px; }
+.start-list { flex: 1; min-height: 0; overflow: auto; padding: 8px 12px 14px; display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 7px; }
+.start-group { grid-column: 1 / -1; font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; color: #64748b; font-weight: 800; padding: 9px 4px 2px; border-bottom: 1px solid rgba(148,163,184,0.14); }
+.start-item { display: flex; align-items: center; gap: 9px; padding: 9px; border-radius: 10px; cursor: pointer; font-size: 11px; font-weight: 700; color: #e2e8f0; background: #111c33; border: 1px solid #26364f; transition: background 0.12s, border 0.12s, transform 0.12s; }
+.start-item:hover { background: rgba(139, 92, 246, 0.3); border-color: var(--quinzuo-cyan); transform: translateY(-1px); }
+.start-item .start-icon { font-size: 20px; width: 26px; text-align: center; }
+.start-item .start-desc { display: block; font-size: 9px; color: #94a3b8; font-weight: 500; margin-top: 2px; }
+.start-empty { grid-column: 1 / -1; text-align: center; color: #64748b; font-size: 11px; padding: 30px; }
+.start-footer { padding: 10px 18px; border-top: 1px solid #334155; font-size: 9px; color: #64748b; text-align: center; }
+
+/* Lista de janelas no topo (substitui o dock de baixo para restaurar minimized) */
+.window-list-menu {
+    position: fixed; top: 34px; right: 12px; z-index: 9600;
+    width: 250px; max-height: 60vh; overflow: auto;
+    background: rgba(15,23,42,0.98); border: 1px solid #475569; border-radius: 11px;
+    box-shadow: 0 18px 45px rgba(0,0,0,0.7); padding: 6px;
+}
+.window-list-menu.hidden { display: none; }
+.window-list-menu .wm-item { font-size: 10px; }

@@ -1,0 +1,49 @@
+#biosScreen {
+    background: radial-gradient(circle at 50% 0%, #0b1220 0%, #01040c 70%);
+}
+.bios-shell {
+    width: min(1050px, 96vw);
+    max-height: 94vh;
+    overflow: auto;
+    background: rgba(2, 6, 23, 0.94);
+    border: 1px solid #1e40af;
+    border-radius: 14px;
+    box-shadow: 0 0 70px rgba(37, 99, 235, 0.25), inset 0 0 60px rgba(30, 64, 175, 0.1);
+    padding: 22px 26px;
+    font-family: 'Cascadia Code', 'Consolas', monospace;
+}
+.bios-header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #1e3a8a; padding-bottom: 14px; margin-bottom: 16px; }
+.bios-logo { font-size: 26px; font-weight: 900; letter-spacing: 0.18em; color: #60a5fa; text-shadow: 0 0 22px rgba(96,165,250,0.6); }
+.bios-sub { font-size: 10px; color: #64748b; margin-top: 3px; letter-spacing: 0.1em; }
+.bios-version { text-align: right; font-size: 10px; color: #93c5fd; line-height: 1.7; }
+.bios-grid { display: grid; grid-template-columns: 230px 1fr; gap: 18px; }
+.bios-nav { display: flex; flex-direction: column; gap: 5px; }
+.bios-nav button {
+    text-align: left; padding: 9px 11px; border-radius: 7px; cursor: pointer;
+    background: rgba(30, 58, 138, 0.18); border: 1px solid transparent;
+    color: #94a3b8; font-size: 11px; font-weight: 700; font-family: inherit;
+}
+.bios-nav button:hover { background: rgba(59, 130, 246, 0.22); color: #e2e8f0; }
+.bios-nav button.active { background: rgba(37, 99, 235, 0.35); border-color: #3b82f6; color: white; }
+.bios-body { min-height: 300px; }
+.bios-section-title { font-size: 13px; font-weight: 800; color: #93c5fd; margin-bottom: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+.bios-form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.bios-form .full { grid-column: 1 / -1; }
+.bios-form label { display: flex; flex-direction: column; gap: 5px; font-size: 10px; color: #94a3b8; }
+.bios-form select, .bios-form input[type=number] {
+    background: #020617; border: 1px solid #1e40af; color: #e2e8f0;
+    padding: 7px 9px; border-radius: 6px; font-size: 11px; font-family: inherit; outline: none;
+}
+.bios-form input[type=range] { accent-color: #3b82f6; }
+.bios-form label.qz-check { flex-direction: row; align-items: center; font-size: 11px; color: #cbd5e1; }
+.bios-foot { border-top: 1px solid #1e3a8a; margin-top: 16px; padding-top: 13px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.bios-hint { margin-left: auto; font-size: 9px; color: #475569; }
+.bios-memory-bar { height: 7px; border-radius: 6px; background: #0f172a; border: 1px solid #1e40af; overflow: hidden; margin-top: 8px; }
+.bios-memory-bar > div { height: 100%; background: linear-gradient(90deg, #2563eb, #06b6d4); transition: width 0.3s; }
+.bios-log { background: #000; border: 1px solid #1e3a8a; border-radius: 6px; padding: 10px; font-size: 10px; color: #4ade80; line-height: 1.6; max-height: 180px; overflow: auto; white-space: pre-wrap; }
+
+@media (max-width: 720px) {
+    .bios-grid { grid-template-columns: 1fr; }
+    .bios-nav { flex-direction: row; flex-wrap: wrap; }
+    .bios-form { grid-template-columns: 1fr; }
+}

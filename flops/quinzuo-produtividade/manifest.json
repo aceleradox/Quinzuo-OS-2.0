@@ -1,0 +1,34 @@
+{
+  "id": "quinzuo-produtividade",
+  "name": "Quinzuo Produtividade",
+  "description": "Notas com autosave, timer Pomodoro 25/5 e calculadora com parser seguro.",
+  "icon": "📝",
+  "version": "1.0.0",
+  "author": "Quinzuo Labs",
+  "files": [
+    {
+      "path": "notes.qnz",
+      "name": "notes.qnz",
+      "type": "application/x-qnz",
+      "dock": true,
+      "icon": "📝",
+      "label": "Notas"
+    },
+    {
+      "path": "pomodoro.qnz",
+      "name": "pomodoro.qnz",
+      "type": "application/x-qnz",
+      "dock": true,
+      "icon": "⏱️",
+      "label": "Pomodoro"
+    },
+    {
+      "path": "calculadora.qnz",
+      "name": "calculadora.qnz",
+      "type": "application/x-qnz",
+      "dock": true,
+      "icon": "🧮",
+      "label": "Calculadora"
+    }
+  ]
+}

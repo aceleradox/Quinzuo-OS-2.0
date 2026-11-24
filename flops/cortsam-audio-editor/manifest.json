@@ -1,0 +1,18 @@
+{
+  "id": "cortsam-audio-editor",
+  "name": "Cortsam Audio Editor",
+  "description": "Sintetizador e editor de áudio Web Audio com forma de onda, efeitos e exportação WAV.",
+  "icon": "🎚️",
+  "version": "1.0.0",
+  "author": "Quinzuo Labs",
+  "files": [
+    {
+      "path": "cortsam.qnz",
+      "name": "cortsam.qnz",
+      "type": "application/x-qnz",
+      "dock": true,
+      "icon": "🎚️",
+      "label": "Cortsam Audio"
+    }
+  ]
+}

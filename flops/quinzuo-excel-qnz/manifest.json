@@ -1,0 +1,18 @@
+{
+  "id": "quinzuo-excel-qnz",
+  "name": "Quinzuo Excel",
+  "description": "Planilha QNZ estilo Excel com grade editável, fórmulas, autosave local e exportação CSV.",
+  "icon": "📊",
+  "version": "1.0.0",
+  "author": "Quinzuo Labs",
+  "files": [
+    {
+      "path": "quinzuo-excel.qnz",
+      "name": "quinzuo-excel.qnz",
+      "type": "application/x-qnz",
+      "dock": true,
+      "icon": "📊",
+      "label": "Quinzuo Excel"
+    }
+  ]
+}

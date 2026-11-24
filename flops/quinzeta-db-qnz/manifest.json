@@ -1,0 +1,18 @@
+{
+  "id": "quinzeta-db-qnz",
+  "name": "Quinzeta DB",
+  "description": "Mini-banco de dados com tabelas, campos configuráveis, CRUD, busca, persistência e exportação JSON.",
+  "icon": "🗄️",
+  "version": "1.0.0",
+  "author": "Quinzuo Labs",
+  "files": [
+    {
+      "path": "quinzeta-db.qnz",
+      "name": "quinzeta-db.qnz",
+      "type": "application/x-qnz",
+      "dock": true,
+      "icon": "🗄️",
+      "label": "Quinzeta DB"
+    }
+  ]
+}

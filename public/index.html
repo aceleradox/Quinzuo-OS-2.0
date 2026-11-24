@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quinzuo OS Static 5.8</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🧠</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/desktop.css">
+    <link rel="stylesheet" href="/css/windows.css">
+    <link rel="stylesheet" href="/css/dock.css">
+    <link rel="stylesheet" href="/css/bios.css">
+    <link rel="stylesheet" href="/css/apps.css">
+    <style id="user_custom_css"></style>
+</head>
+<body>
+
+    <div id="user_custom_widget_container" class="absolute inset-0 pointer-events-none z-[2]"></div>
+    <div id="contextMenu" class="hidden flex-col py-1 text-xs overflow-hidden font-medium"></div>
+
+    <div id="bsodScreen">
+        <h1 class="bsod-title">TRAUMA COGNITIVO SINALIZADO</h1>
+        <p class="text-xl mb-6 font-bold tracking-wider">A amígdala alertou um erro crítico de:</p>
+        <p id="bsodErrorMsg" class="text-3xl font-extrabold text-yellow-300 mb-12 uppercase animate-pulse border-b-2 border-yellow-300 pb-2"></p>
+        <p class="text-md opacity-90 max-w-2xl leading-relaxed">
+            O córtex pré-frontal foi desativado temporariamente para proteção do sistema.<br><br>
+            Pressione F5 ou atualize a página para tentar ressuscitar a conexão.
+        </p>
+    </div>
+
+    <div id="btnEmancipar" title="???" aria-label="Modo emancipação"></div>
+
+    <!-- BIOS / firmware -->
+    <div id="biosScreen" class="qz-overlay hidden"></div>
+
+    <!-- Assistente de instalação (primeiro boot) -->
+    <div id="setupScreen" class="qz-overlay hidden">
+        <div class="qz-panel max-w-2xl w-full max-h-[92vh] overflow-y-auto space-y-5">
+            <div class="text-center">
+                <h1 class="text-2xl font-bold text-cyan-400">Quinzuo OS Static</h1>
+                <p class="text-xs text-slate-400 mt-1">Assistente de configuração inicial · Núcleo Cognitivo 5.8</p>
+            </div>
+            <div class="space-y-4 text-sm text-slate-200">
+                <label class="qz-field">
+                    <span>Perfil de Desktop</span>
+                    <select id="optDesktopMode">
+                        <option value="valsa">Modo Valsa — Desktop clássico (USER)</option>
+                        <option value="funk">Modo Baile Funk — Autonomia Progressiva Total</option>
+                    </select>
+                </label>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <label class="qz-field"><span>Frequência do Córtex (MHz)</span><input type="range" id="optCortexFreq" min="800" max="5800" step="100" value="2900"></label>
+                    <label class="qz-field"><span>Memória Neural (MB)</span><input type="range" id="optMemory" min="512" max="16384" step="512" value="8192"></label>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 border-t border-slate-700 pt-3">
+                    <label class="qz-check"><input type="checkbox" id="optVMQ"><span>Virtualizar maturidade precoce (VM-Q)</span></label>
+                    <label class="qz-check"><input type="checkbox" id="optDecision"><span>Otimizar tomada de decisão</span></label>
+                    <label class="qz-check"><input type="checkbox" id="optOverclock"><span class="text-orange-300 font-bold">Overclock Cognitivo</span></label>
+                    <label class="qz-check"><input type="checkbox" id="optMaturityOC"><span class="text-amber-300 font-bold">Overclock na Maturidade</span></label>
+                    <label class="qz-check"><input type="checkbox" id="optAudio" checked><span>Áudio de interface (HQAudio)</span></label>
+                    <label class="qz-check"><input type="checkbox" id="optSecureBoot" checked><span>Boot seguro do córtex</span></label>
+                </div>
+
+                <div class="border-t border-slate-700 pt-3">
+                    <label class="qz-check"><input type="checkbox" id="optImplanol"><span class="text-pink-300 font-bold">Modo Implanol Virtual</span></label>
+                    <p class="text-[10px] text-slate-500 ml-7 -mt-1">Bloqueia a criação de novas partições VHD.</p>
+                    <label class="qz-check mt-3"><input type="checkbox" id="optQuinzetaDB"><span class="text-emerald-300 font-bold">Habilitar serviços do Quinzeta DB</span></label>
+                    <p class="text-[10px] text-slate-500 ml-7 -mt-1">Banco compartilhado para Quinzuo Excel e Access.</p>
+                    <label class="qz-check mt-3 !text-red-400"><input type="checkbox" id="optSupremo"><span>Modo cognitivo supremo (capacidade 10.0)</span></label>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <button id="btnSetupBack" class="qz-btn qz-btn-ghost flex-1">Voltar à BIOS</button>
+                <button id="btnSetupApply" class="qz-btn qz-btn-primary flex-1">INICIAR SISTEMA OPERACIONAL</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Boot animation -->
+    <div id="bootScreen" class="qz-overlay hidden flex-col">
+        <div class="cortex-pulse flex items-center justify-center text-3xl mb-4" id="bootIcon">🧠</div>
+        <h1 class="font-extrabold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400 mb-1" id="bootTitle">QUINZUO OS</h1>
+        <div class="text-cyan-400 font-mono tracking-wider mb-6" id="bootSubtitle">CAPACIDADE COGNITIVA 5.8 · NÚCLEO CÓRTEX PRÉ-FRONTAL</div>
+        <div class="w-80 h-2 bg-slate-800 rounded-full overflow-hidden border border-slate-700 mb-5"><div id="bootBar" class="h-full bg-gradient-to-r from-violet-500 to-cyan-400 w-0 transition-all duration-300"></div></div>
+
+        <div id="bootPhraseBox">
+            <div id="bootLog">Sincronizando sinapses...</div>
+            <div id="bootPhraseCount">frase 01 / 12 · carregando córtex</div>
+        </div>
+        <div id="bootSubLog" class="qz-mono">[BIOS] aguardando sincronização neural...</div>
+    </div>
+
+    <!-- Desktop -->
+    <div id="desktop" class="hidden">
+        <div id="neoFetchWidget" class="absolute top-10 right-10 text-slate-300 font-mono text-[11px] pointer-events-none drop-shadow-2xl bg-black/60 p-5 rounded-lg backdrop-blur-md border border-slate-700/50 flex gap-5 z-[5] hidden transition-colors duration-1000">
+            <pre id="neoLogo" class="text-cyan-400 font-bold leading-tight transition-colors duration-1000">
+       /\
+      /  \
+     /\   \
+    /      \
+   /   ,,   \
+  /   |  |   \
+ /_-''    ''-_\
+            </pre>
+            <div class="flex flex-col gap-0.5 min-w-[280px]">
+                <div id="neoUser" class="mb-1">quinzuo<span class="text-slate-400">@</span>os <span class="text-cyan-400 font-bold">(USER)</span></div>
+                <div class="text-slate-500">--------------------------------</div>
+                <div><span class="neo-label text-cyan-400 font-bold">OS:</span> Quinzuo OS Static 5.8</div>
+                <div><span class="neo-label text-cyan-400 font-bold">Kernel:</span> Cognitive-VM 5.8 (WASM)</div>
+                <div><span class="neo-label text-cyan-400 font-bold">Uptime:</span> <span id="neoUptime">0 mins</span></div>
+                <div><span class="neo-label text-cyan-400 font-bold">Cap. Cognitiva:</span> <span id="neoCap" class="text-white font-bold">5.8</span></div>
+                <div><span class="neo-label text-cyan-400 font-bold">Córtex P-Frontal:</span> <span id="neoCortex">58%</span></div>
+                <div><span class="neo-label text-cyan-400 font-bold">Estado Emocional:</span> <span id="neoEmo">Instável</span></div>
+                <div><span class="neo-label text-cyan-400 font-bold">Processamento:</span> <span id="neoProc">Baseado em Impulsos</span></div>
+                <div><span class="neo-label text-cyan-400 font-bold">Dens. Simpática:</span> <span id="neoSimp">Normal</span></div>
+                <div class="mt-2 flex gap-1">
+                    <div class="w-4 h-4 bg-black"></div><div class="w-4 h-4 bg-red-500"></div><div class="w-4 h-4 bg-green-500"></div><div class="w-4 h-4 bg-yellow-500"></div><div class="w-4 h-4 bg-blue-500"></div><div class="w-4 h-4 bg-violet-500"></div><div class="w-4 h-4 bg-cyan-500"></div><div class="w-4 h-4 bg-white"></div>
+                </div>
+            </div>
+        </div>
+        <div id="desktopFilesGrid"></div>
+    </div>
+
+    <div id="topBar" class="hidden">
+        <div class="top-btn text-violet-400 font-bold flex items-center gap-1.5" id="btnStart">⚡ QUINZUO STATIC</div>
+        <div class="top-btn" id="btnCortex">🧠 Córtex</div>
+        <div class="top-btn" id="btnVhd">💾 Partições</div>
+        <div class="top-btn" id="btnBios">🔧 BelaNovaEFI</div>
+        <div class="top-btn" id="btnWindows">🪟 Janelas</div>
+        <div class="top-btn" id="btnConfig">⚙️ Configuração</div>
+        <div class="ml-auto flex items-center gap-4 text-xs font-mono"><div id="topClock" class="font-bold text-slate-200">--:--:--</div></div>
+    </div>
+
+    <!-- Menu iniciar centralizado (estilo Deepin/Linux) -->
+    <div id="startMenu" class="start-overlay hidden">
+        <div class="start-backdrop" data-start-close></div>
+        <div class="start-panel" role="dialog" aria-label="Menu iniciar Quinzuo OS">
+            <div class="start-header">
+                <div class="start-brand"><span>⚡</span> QUINZUO OS <small>Centro de aplicações · córtex 5.8</small></div>
+                <button id="btnStartClose" class="start-close" title="Fechar menu (Esc)">✕</button>
+            </div>
+            <div class="start-search">
+                <span>🔎</span>
+                <input id="startSearch" type="text" placeholder="Buscar aplicativo..." autocomplete="off">
+            </div>
+            <div id="startMenuList" class="start-list"></div>
+            <div class="start-footer">15 anos de córtex pré-frontal · <span id="startWindowHint">0 janelas abertas</span> · ESC para fechar</div>
+        </div>
+    </div>
+
+    <div id="windowListMenu" class="window-list-menu hidden"></div>
+
+    <div id="windowsContainer" class="hidden"></div>
+
+    <script type="module" src="/js/main.js"></script>
+</body>
+</html>
