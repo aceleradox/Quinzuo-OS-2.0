@@ -61,9 +61,9 @@ Certifique-se de ter o [Node.js](https://nodejs.org) instalado em sua máquina.
 
 Desenvolvido por **Acelerado DEV (Vulgo Acelerado)** — conheça outros projetos da família **Quinzuo** e acompanhe as atualizações:
 ````
-itch.io:(https://aceleradox.itch.io/)
-Instagram)](https://www.instagram.com/vulgo_acelerado/)
-Threads:(https://www.threads.com/@vulgo_acelerado)
+itch.io:https://aceleradox.itch.io/
+Instagram:https://www.instagram.com/vulgo_acelerado/
+Threads:https://www.threads.com/@vulgo_acelerado
 ````
 
 ## 🤝 Contribuição
