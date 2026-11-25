@@ -7,6 +7,11 @@ Uma aplicação web construída em Node.js que simula um ambiente de sistema ope
 - **Interface Web (Web OS):** Frontend servido a partir da pasta `public/` simulando a experiência de um sistema operacional no navegador.
 - **Disco Rígido Virtual (VHD):** Armazenamento e persistência de estado/arquivos utilizando um banco de dados SQLite local (`vhd.sqlite`).
 - **Ferramentas e Utilitários:** Módulos e scripts auxiliares organizados nos diretórios `tools/` e `flops/`.
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/e9fc1fb5-9804-4da1-bf23-1a0f8c6af123" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/e2f64dc2-9317-49b1-9eef-d236d2824181" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/8bd4ed28-ce9b-4852-9f08-e59e48ba2d46" />
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/a7b90ab9-1687-4128-bbf5-2582691a4595" />
 
 ## 🛠️ Tecnologias Utilizadas
 
